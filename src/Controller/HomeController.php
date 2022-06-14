@@ -23,4 +23,17 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', 
         ['n' => $name, 'a' => $age, 'days' => $tabDays, 'arrow' => $image]);
     }
+
+    /**
+     * @Route("/personne", name="app_person")
+     */
+    public function getData(){
+        $data = [
+            ["id" => 1, "name" => "Dupond", "prenom" => "Thomas", "age" => 20, "image" => "arrow.png"],
+            ["id" => 2, "name" => "Dupond", "prenom" => "Martin", "age" => 20, "image" => "arrow.png"],
+            ["id" => 3, "name" => "Dupond", "prenom" => "Robert", "age" => 20, "image" => "arrow.png"],
+            ["id" => 4, "name" => "Dupond", "prenom" => "Michel", "age" => 20, "image" => "arrow.png"],
+        ];
+        return $this->render('home/data.html.twig', ['person'=>$data]);
+    }
 }
