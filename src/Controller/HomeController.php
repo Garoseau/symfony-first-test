@@ -29,7 +29,7 @@ class HomeController extends AbstractController
      */
     public function getData(){
         $data = [
-            ["id" => 1, "name" => "Dupond", "prenom" => "Thomas", "age" => 20, "image" => "arrow.png"],
+            ["id" => 1, "q" => "Dupond", "prenom" => "Thomas", "age" => 20, "image" => "arrow.png"],
             ["id" => 2, "name" => "Dupond", "prenom" => "Martin", "age" => 20, "image" => "arrow.png"],
             ["id" => 3, "name" => "Dupond", "prenom" => "Robert", "age" => 20, "image" => "arrow.png"],
             ["id" => 4, "name" => "Dupond", "prenom" => "Michel", "age" => 20, "image" => "arrow.png"],
