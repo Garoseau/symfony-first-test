@@ -8,32 +8,38 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
-    /**
-     * @Route("/home", name="app_home")
-     */
-     
+    private $data;
+    public function __construct(){
+        $this->data =  [
+            ["id"=>1, "name"=>"Dupond", "lastname"=>"Roger","age"=>22, "image"=>"roger.jpg"],
+            ["id"=>2, "name"=>"Durand", "lastname"=>"Thomas","age"=>52, "image"=>"thomas.jpeg"],
+        ];
+    }
+    #[Route('/home', name: 'app_home')]
     public function index(): Response
-    {   
-        $name = "Dupond";
-        $age = 16;
-        $image = "img/Arrow.jpg";
-        $tabDays = ["Lundi", "Mardi","Mercredi", "Jeudi", "Vendredi"];
-        
+    {
+        return $this->render('home/index.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
 
-        return $this->render('home/index.html.twig', 
-        ['n' => $name, 'a' => $age, 'days' => $tabDays, 'arrow' => $image]);
+    #[Route('/person', name: 'app_person')]
+    public function getData(): Response
+    {
+        
+        return $this->render('home/data.html.twig', [
+            'personnes' => $this->data,
+        ]);
     }
 
     /**
-     * @Route("/personne", name="app_person")
+     * @Route("/admin/person/{id}", name="person_item")
      */
-    public function getData(){
-        $data = [
-            ["id" => 1, "q" => "Dupond", "prenom" => "Thomas", "age" => 20, "image" => "arrow.png"],
-            ["id" => 2, "name" => "Dupond", "prenom" => "Martin", "age" => 20, "image" => "arrow.png"],
-            ["id" => 3, "name" => "Dupond", "prenom" => "Robert", "age" => 20, "image" => "arrow.png"],
-            ["id" => 4, "name" => "Dupond", "prenom" => "Michel", "age" => 20, "image" => "arrow.png"],
-        ];
-        return $this->render('home/data.html.twig', ['person'=>$data]);
+    public function getItem(int $id){
+        foreach ($this->data as $person) {
+            if($person['id'] == $id){
+                return $this->render('home/item_person.html.twig', ['person_data'=>$person]);
+            }
+        }
     }
 }

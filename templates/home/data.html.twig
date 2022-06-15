@@ -25,15 +25,19 @@
 	</thead>
 
 	<tbody>
-		{% for carac in person %}
+
+		{% for personnage in person %}
+
 		<tr>
-			<th>{{carac.id}}</th>
-			<th>{{carac.name}}</th>
-			<th>{{carac.prenom}}</th>
-			<th>{{carac.age}}</th>
-			<th>{{carac.image}}</th>
+			<th>{{personnage.id}}</th>
+			<th>{{personnage.name}}</th>
+			<th>{{personnage.lastname}}</th>
+			<th>{{personnage.age}}</th>
+			<th>{{personnage.image}}</th>
 		</tr>
+
 		{% endfor %}
+
 	</tbody>
 </table>	
 </body>
